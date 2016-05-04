@@ -1,0 +1,80 @@
+﻿<Window  Name="win" Cursor="Arrow" x:Class="image_veiwer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="600" MouseEnter="Window_MouseEnter" WindowStartupLocation="CenterScreen" MouseWheel="win_MouseWheel" WindowState="Maximized" KeyDown="win_KeyDown" 
+            AllowsTransparency="True" WindowStyle="None" SizeChanged="win_SizeChanged">
+    <Window.Background>
+        <SolidColorBrush Opacity=".3"  Color="Black"/>
+    </Window.Background>
+
+    <Grid Name="gri" MouseDown="gri_MouseDown" MouseEnter="gri_MouseEnter" ScrollViewer.HorizontalScrollBarVisibility="Visible">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="10*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        <Viewbox Name="vi" Stretch="Uniform" IsEnabledChanged="newctrl_IsEnabledChanged" SizeChanged="newctrl_SizeChanged" MouseDown="newctrl_MouseDown" Grid.ColumnSpan="6" Grid.Row="1" MouseLeave="vi_MouseLeave" MouseMove="vi_MouseMove" MouseUp="vi_MouseUp" Margin="0,0,10,1" >
+            <Image Name="newctrl"  Stretch="Uniform" IsEnabledChanged="newctrl_IsEnabledChanged" SizeChanged="newctrl_SizeChanged" Grid.Row="1" MouseDown="newctrl_MouseDown" Grid.ColumnSpan="3" Margin="1,50,0,0" Grid.Column="1" MouseLeave="newctrl_MouseLeave" />
+        </Viewbox>
+        <Rectangle Grid.Row="2" Fill="Transparent" Cursor="Hand" Name="rec"    RadiusY="7.842" RadiusX="7.842" Grid.Column="0" MouseDown="Rectangle_MouseDown" MouseEnter="Rectangle_MouseEnter" MouseLeave="rec_MouseLeave" Margin="1,0,4,0"  ToolTip="OPEN"/>
+        <TextBlock Grid.Row="2" Name="tx1" Background="Transparent" Foreground="White" FontFamily="Eras ITC" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Height="34" Width="69" TextWrapping="Wrap" MouseDown="Rectangle_MouseDown" MouseEnter="Rectangle_MouseEnter" MouseLeave="rec_MouseLeave" Cursor="Hand" Margin="18,0,18,2">
+                    OPEN
+        </TextBlock>
+        <Rectangle Grid.Row="2" Fill="Transparent" Cursor="Hand" Name="rec1"   RadiusY="7.842" RadiusX="7.842" Grid.Column="1" MouseDown="rec1_MouseDown" MouseEnter="rec1_MouseEnter" MouseLeave="rec1_MouseLeave" ToolTip="ZOOM OUT" Margin="1,0,4,0" RenderTransformOrigin="0.55,0.562"/>
+        <TextBlock Grid.Row="2" x:Name="tx2" Background="Transparent" Foreground="White" FontFamily="Eras ITC" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Height="34" Width="70" TextWrapping="Wrap"  Cursor="Hand" Margin="25,0,10,2" MouseDown="rec1_MouseDown" MouseEnter="rec1_MouseEnter" MouseLeave="rec1_MouseLeave" Grid.Column="1"><Run FontSize="14.75" Text="PREVIOUS"/></TextBlock>
+        <Rectangle Grid.Row="2" Fill="Transparent" Cursor="Hand" Name="rec2"   RadiusY="7.842" RadiusX="7.842" Grid.Column="2" MouseDown="Rectangle_MouseDown_1" MouseEnter="rec2_MouseEnter" MouseLeave="rec2_MouseLeave" ToolTip="ZOOM IN" Margin="1,0,4,0"/>
+        <TextBlock Grid.Row="2" x:Name="tx3" Background="Transparent" Foreground="White" FontFamily="Eras ITC" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Height="34" Width="70"  Cursor="Hand" Margin="25,0,10,2"  MouseDown="Rectangle_MouseDown_1" MouseEnter="rec2_MouseEnter" MouseLeave="rec2_MouseLeave" Grid.Column="2" TextWrapping="WrapWithOverflow" FontStretch="Expanded" TextDecorations="{x:Null}" Text="NEXT"/>
+        <Rectangle Grid.Row="2" Fill="Transparent" Cursor="Hand" Name="rec3"   RadiusY="7.842" RadiusX="7.842" Grid.Column="3" MouseDown="Rectangle_MouseDown_2" MouseEnter="Rectangle_MouseEnter_1" MouseLeave="rec3_MouseLeave" Margin="1,0,4,0" ToolTip="ROTATE"/>
+        <TextBlock Grid.Row="2" Name="tx4" Background="Transparent" Foreground="White" FontFamily="Eras ITC" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Height="34" Width="70" TextWrapping="Wrap"  Cursor="Hand" Margin="25,0,10,2"  MouseDown="Rectangle_MouseDown_2" MouseEnter="Rectangle_MouseEnter_1" MouseLeave="rec3_MouseLeave" Grid.Column="3">
+                    ROTATE
+        </TextBlock>
+        <Rectangle Grid.Row="2" Fill="Transparent" Cursor="Hand" Name="rr"     RadiusY="7.842" RadiusX="7.842" MouseMove="Rectangle_MouseMove" MouseDown="rr_MouseDown" MouseEnter="rr_MouseEnter" MouseLeave="rr_MouseLeave" Grid.Column="4" Margin="1,0,4,0" ToolTip="Full Screen"/>
+        <TextBlock Grid.Row="2" Name="tx5" Background="Transparent" Foreground="White" FontFamily="Eras ITC" HorizontalAlignment="Center" VerticalAlignment="Center" Height="34" Width="85" TextWrapping="Wrap"  Cursor="Hand" Margin="10,0,10,2"  MouseMove="Rectangle_MouseMove" MouseDown="rr_MouseDown" MouseEnter="rr_MouseEnter" MouseLeave="rr_MouseLeave" Grid.Column="4" FontSize="14">
+                     FULL SCREEN
+        </TextBlock>
+        <Border Name="bor" BorderBrush="Black" Grid.Row="0" RenderTransformOrigin="0.5,0.5">
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-19.762"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Border.RenderTransform>
+            <Button Name="btbor" Background="Transparent" Content="CLOSE" FontFamily="SketchFlow Print" FontSize="22" BorderBrush="AliceBlue" BorderThickness="2" Click="Button_Click" FontStyle="Italic" FontStretch="Expanded" FontWeight="Thin" TextOptions.TextHintingMode="Animated" RenderTransformOrigin="0.5,0.5"  Foreground="White" Margin="14,-3,14,12">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleX="20" AngleY="20"/>
+                        <RotateTransform Angle="-0.69"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+                <Button.OpacityMask>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Offset="0" Color="Black"></GradientStop>
+                        <GradientStop Offset="1" Color="Transparent"></GradientStop>
+                    </LinearGradientBrush>
+                </Button.OpacityMask>
+            </Button>
+        </Border>
+        <ListBox Cursor="Hand" BorderThickness="0" Name="gr" Background="Transparent" Grid.Column="5" Grid.RowSpan="3" MouseEnter="gr_MouseEnter" MouseLeave="gr_MouseLeave" SelectedIndex="0" SelectionChanged="gr_SelectionChanged"  >
+            <ListBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.363"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ListBox.RenderTransform>
+        </ListBox>
+    </Grid>
+</Window>
